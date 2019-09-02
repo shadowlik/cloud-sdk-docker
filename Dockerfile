@@ -1,6 +1,9 @@
 FROM docker:17.12.0-ce as static-docker-source
 
 FROM debian:stretch
+# Install envsubs
+RUN apt-get update && apt-get -y install gettext-base && apt-get clean
+#################
 ARG CLOUD_SDK_VERSION=260.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 ENV PATH "$PATH:/opt/google-cloud-sdk/bin/"
